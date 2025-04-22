@@ -1,0 +1,14 @@
+# Use official OpenJDK 11 runtime image
+FROM openjdk:11-jre-slim
+
+# Set environment variable for the JAR
+ENV APP_JAR=HelloJenkins-1.0-SNAPSHOT.jar
+
+# Set working directory
+WORKDIR /app
+
+# Copy the JAR from local machine into container
+COPY target/${APP_JAR} /app/${APP_JAR}
+
+# Run the application
+CMD ["java", "-jar", "HelloJenkins-1.0-SNAPSHOT.jar"]
